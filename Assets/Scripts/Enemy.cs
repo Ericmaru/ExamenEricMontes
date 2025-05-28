@@ -7,13 +7,13 @@ public class Enemy : MonoBehaviour
     public float speed;
 
     float horizontal = 1;
-    Animator anim;
+    Animator _animator;
     BoxCollider2D boxCollider;
     Rigidbody2D rBody;
 
     void Awake()
     {
-        anim = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         rBody = GetComponent<Rigidbody2D>();
     }
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        anim.SetBool("IsDead", true);
+        _animator.SetBool("IsDead", true);
         boxCollider.enabled = false;
         Destroy(this.gameObject, 0.5f);
     }
@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
             mario.Die();
         }
 
-        if(collision.gameObject.tag == "ColisionGoomba")
+        if(collision.gameObject.tag == "enemies")
         {
             if(horizontal == 1)
             {
@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.tag == "ColisionGoomba")
+        if(collider.gameObject.tag == "enemies")
         {
             if(horizontal == 1)
             {

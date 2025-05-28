@@ -19,7 +19,7 @@ public class GroundSensor : MonoBehaviour
         {
             isGrounded = true;
         }
-        else if(other.gameObject.layer == 6)
+        else if(other.gameObject.layer == 8)
         {
             Debug.Log("Goomba muerto");
             
